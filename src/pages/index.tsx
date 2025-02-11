@@ -9,15 +9,15 @@ const HomePage: FC = () => {
       <header className="bg-white shadow-md">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
           {/* Логотип */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Image src="/images/logo.png" alt="Gerat Logo" width={50} height={50} />
-            <span className="text-xl font-bold text-blue-600">
+          <Link href="/" className="flex items-center space-x-4">
+            <Image className="hover:rotate-180 duration-500" src="/images/logo.png" alt="Gerat Logo" width={50} height={50} />
+            <span className="text-2xl font-bold">
               Gerat Autoparts
             </span>
           </Link>
           {/* Меню навигации */}
           <nav>
-            <ul className="flex space-x-4">
+            <ul className="flex space-x-4 text-lg">
               <li>
                 <Link href="/" className="hover:text-blue-600">
                   Главная
@@ -50,7 +50,7 @@ const HomePage: FC = () => {
             Качественные тормозные системы для вашего автомобиля
           </h1>
           <p className="mb-8 text-lg">
-            Компания Gerat работает на рынке с 2012 года, предлагая
+            Компания Gerat Autoparts работает на рынке с 2012 года, предлагая
             высококачественные автозапчасти напрямую от производителей{" "}
             <button className="citation-flag" data-index="2"></button>.
           </p>
