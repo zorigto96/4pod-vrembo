@@ -10,10 +10,14 @@ const HomePage: FC = () => {
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
           {/* Логотип */}
           <Link href="/" className="flex items-center space-x-4">
-            <Image className="hover:rotate-180 duration-500" src="/images/logo.png" alt="Gerat Logo" width={50} height={50} />
-            <span className="text-2xl font-bold">
-              Gerat Autoparts
-            </span>
+            <Image
+              className="duration-500 hover:rotate-180"
+              src="/images/logo.png"
+              alt="Gerat Logo"
+              width={50}
+              height={50}
+            />
+            <span className="text-2xl font-bold">Gerat Autoparts</span>
           </Link>
           {/* Меню навигации */}
           <nav>
@@ -44,19 +48,70 @@ const HomePage: FC = () => {
       </header>
 
       {/* Баннер */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 py-16 text-white">
+      {/* Баннер */}
+      {/* Баннер с мягким градиентом */}
+      {/* Баннер с тремя фотографиями */}
+      <section className="bg-gray-900 py-16">
         <div className="container mx-auto text-center">
-          <h1 className="mb-4 text-4xl font-bold">
+          <h1 className="mb-4 text-4xl font-bold text-white">
             Качественные тормозные системы для вашего автомобиля
           </h1>
-          <p className="mb-8 text-lg">
-            Компания Gerat Autoparts работает на рынке с 2012 года, предлагая
-            высококачественные автозапчасти напрямую от производителей{" "}
-            <button className="citation-flag" data-index="2"></button>.
+          <p className="mb-8 text-lg text-gray-400">
+            Компания Gerat работает на рынке с 2012 года, предлагая
+            высококачественные автозапчасти напрямую от производителей .
           </p>
+
+          {/* Секция с изображениями */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            {/* Изображение 1 */}
+            <div className="group relative overflow-hidden rounded-lg shadow-md">
+              <Image
+                src="/images/product1.jpg"
+                alt="Тормозной диск F023W"
+                width={400}
+                height={300}
+                className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-white">
+                <p className="text-sm font-bold">Тормозной диск F023W</p>
+              </div>
+            </div>
+
+            {/* Изображение 2 */}
+            <div className="group relative overflow-hidden rounded-lg shadow-md">
+              <Image
+                src="/images/product2.jpg"
+                alt="Тормозные колодки F166N"
+                width={400}
+                height={300}
+                className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-white">
+                <p className="text-sm font-bold">Тормозные колодки F166N</p>
+              </div>
+            </div>
+
+            {/* Изображение 3 */}
+            <div className="group relative overflow-hidden rounded-lg shadow-md">
+              <Image
+                src="/images/product3.jpg"
+                alt="Коллодки стояночного тормоза P-200"
+                width={400}
+                height={300}
+                className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-white">
+                <p className="text-sm font-bold">
+                  Коллодки стояночного тормоза P-200
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Кнопка */}
           <Link
             href="/catalog"
-            className="rounded-full bg-white px-6 py-3 font-bold text-blue-600 shadow transition hover:bg-blue-100"
+            className="mt-8 inline-block rounded-full bg-gray-500 px-6 py-3 font-bold text-white shadow transition hover:bg-gray-400"
           >
             Перейти в каталог
           </Link>
