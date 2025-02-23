@@ -1,51 +1,14 @@
 import { type FC } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Header from "~/components/header";
+import Footer from "~/components/footer";
 
 const HomePage: FC = () => {
   return (
     <main className="min-h-screen bg-gray-100">
       {/* Шапка сайта */}
-      <header className="bg-white shadow-md">
-        <div className="container mx-auto flex items-center justify-between px-4 py-4">
-          {/* Логотип */}
-          <Link href="/" className="flex items-center space-x-4">
-            <Image
-              className="duration-500 hover:rotate-180"
-              src="/images/logo.png"
-              alt="Gerat Logo"
-              width={50}
-              height={50}
-            />
-            <span className="text-2xl font-bold">Gerat Autoparts</span>
-          </Link>
-          {/* Меню навигации */}
-          <nav>
-            <ul className="flex space-x-4 text-lg">
-              <li>
-                <Link href="/" className="hover:text-blue-600">
-                  Главная
-                </Link>
-              </li>
-              <li>
-                <Link href="/catalog" className="hover:text-blue-600">
-                  Каталог
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-blue-600">
-                  О компании
-                </Link>
-              </li>
-              <li>
-                <Link href="/contacts" className="hover:text-blue-600">
-                  Контакты
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Баннер */}
       {/* Баннер */}
@@ -181,14 +144,7 @@ const HomePage: FC = () => {
       </section>
 
       {/* Футер */}
-      <footer className="bg-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p>Gerat Autoparts</p>
-          <p>ул. Автомоторная, д.1/3 стр. 2, 125438 Москва, Россия</p>
-          <p>Телефон: +7 (981) 933-54-05 | Email: info@gerat-parts.ru</p>{" "}
-          <button className="citation-flag" data-index="7"></button>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 };

@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 // app/catalog/page.tsx
 
-import { FC } from "react";
+import { type FC } from "react";
 import { api } from "~/utils/api";
-import Image from "next/image";
-import Link from "next/link";
+import Header from "~/components/header";
+import Footer from "~/components/footer";
 
 const CatalogPage: FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const { data: products, isLoading, isError } = api.product.getAll.useQuery();
+  const { isLoading, isError } = api.product.getAll.useQuery();
 
   if (isLoading) {
     return <div className="py-16 text-center">Загрузка...</div>;
@@ -24,42 +24,7 @@ const CatalogPage: FC = () => {
 
   return (
     <main className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow-md">
-        <div className="container mx-auto flex items-center justify-between px-4 py-4">
-          {/* Логотип */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo.png" alt="Gerat Logo" width={50} height={50} />
-            <span className="text-xl font-bold text-blue-600">
-              Gerat Autoparts
-            </span>
-          </Link>
-          {/* Меню навигации */}
-          <nav>
-            <ul className="flex space-x-4">
-              <li>
-                <Link href="/" className="hover:text-blue-600">
-                  Главная
-                </Link>
-              </li>
-              <li>
-                <Link href="/catalog" className="font-bold hover:text-blue-600">
-                  Каталог
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-blue-600">
-                  О компании
-                </Link>
-              </li>
-              <li>
-                <Link href="/contacts" className="hover:text-blue-600">
-                  Контакты
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Секция каталога товаров */}
       <section className="bg-white py-16">
@@ -95,13 +60,7 @@ const CatalogPage: FC = () => {
       </section>
 
       {/* Футер */}
-      <footer className="bg-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p>Gerat Autoparts</p>
-          <p>ул. Автомоторная, д.1/3 стр. 2, 125438 Москва, Россия</p>
-          <p>Телефон: +7 (981) 933-54-05 | Email: info@gerat-parts.ru</p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 };

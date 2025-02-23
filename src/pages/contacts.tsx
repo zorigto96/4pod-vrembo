@@ -1,9 +1,9 @@
 // app/contacts/page.tsx
 
 import { type FC } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { useForm, type SubmitHandler } from "react-hook-form";
+import Footer from "~/components/footer";
+import Header from "~/components/header";
 
 interface ContactFormInputs {
   name: string;
@@ -25,60 +25,33 @@ const ContactsPage: FC = () => {
 
   return (
     <main className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow-md">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          {/* Логотип */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Image src="/logo.png" alt="Gerat Logo" width={50} height={50} />
-            <span className="text-xl font-bold text-blue-600">Gerat Autoparts</span>
-          </Link>
-          {/* Меню навигации */}
-          <nav>
-            <ul className="flex space-x-4">
-              <li>
-                <Link href="/" className="hover:text-blue-600">
-                  Главная
-                </Link>
-              </li>
-              <li>
-                <Link href="/catalog" className="hover:text-blue-600">
-                  Каталог
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-blue-600">
-                  О компании
-                </Link>
-              </li>
-              <li>
-                <Link href="/contacts" className="hover:text-blue-600 font-bold">
-                  Контакты
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Секция контактов */}
-      <section className="py-16 bg-white">
+      <section className="bg-white py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Контакты</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <h2 className="mb-8 text-center text-3xl font-bold">Контакты</h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {/* Левая часть: Контактная информация */}
             <div>
-              <h3 className="text-2xl font-bold mb-4">Контактная информация</h3>
-              <p className="text-lg text-gray-600 mb-4">
+              <h3 className="mb-4 text-2xl font-bold">Контактная информация</h3>
+              <p className="mb-4 text-lg text-gray-600">
                 Компания Gerat Autoparts
               </p>
-              <p className="text-lg text-gray-600 mb-4">
-                Адрес: ул. Автомоторная, д.1/3 стр. 2, 125438 Москва, Россия
+              <p className="mb-4 text-lg text-gray-600">
+                Адрес: ул. Oвтомоторная, д.1/3 стр. 2, 125438 Мaсква, Россия
               </p>
-              <p className="text-lg text-gray-600 mb-4">
-                Телефон: <a href="tel:+79819335405" className="text-blue-600">+7 (981) 933-54-05</a>
+              <p className="mb-4 text-lg text-gray-600">
+                Телефон:{" "}
+                <a href="tel:+79819335405" className="text-blue-600">
+                  +7 (000) 000-00-00
+                </a>
               </p>
-              <p className="text-lg text-gray-600 mb-4">
-                Email: <a href="mailto:info@gerat-parts.ru" className="text-blue-600">info@gerat-parts.ru</a>
+              <p className="mb-4 text-lg text-gray-600">
+                Email:{" "}
+                <a href="mailto:info@gerat-parts.ru" className="text-blue-600">
+                  info@gerat-parts.ru
+                </a>
               </p>
               {/* Карта */}
               <div className="mt-8">
@@ -95,47 +68,74 @@ const ContactsPage: FC = () => {
             </div>
             {/* Правая часть: Форма обратной связи */}
             <div>
-              <h3 className="text-2xl font-bold mb-4">Форма обратной связи</h3>
+              <h3 className="mb-4 text-2xl font-bold">Форма обратной связи</h3>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Имя
                   </label>
                   <input
                     {...register("name", { required: "Поле обязательно" })}
                     id="name"
                     type="text"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                   />
-                  {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+                  {errors.name && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.name.message}
+                    </p>
+                  )}
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Email
                   </label>
                   <input
-                    {...register("email", { required: "Поле обязательно", pattern: { value: /\S+@\S+\.\S+/, message: "Неверный формат email" } })}
+                    {...register("email", {
+                      required: "Поле обязательно",
+                      pattern: {
+                        value: /\S+@\S+\.\S+/,
+                        message: "Неверный формат email",
+                      },
+                    })}
                     id="email"
                     type="email"
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                   />
-                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+                  {errors.email && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Сообщение
                   </label>
                   <textarea
                     {...register("message", { required: "Поле обязательно" })}
                     id="message"
                     rows={4}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                   />
-                  {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>}
+                  {errors.message && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.message.message}
+                    </p>
+                  )}
                 </div>
                 <button
                   type="submit"
-                  className="bg-blue-600 text-white px-6 py-3 rounded-full font-bold shadow hover:bg-blue-700 transition"
+                  className="rounded-full bg-blue-600 px-6 py-3 font-bold text-white shadow transition hover:bg-blue-700"
                 >
                   Отправить
                 </button>
@@ -146,13 +146,7 @@ const ContactsPage: FC = () => {
       </section>
 
       {/* Футер */}
-      <footer className="bg-white py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p>Gerat Autoparts</p>
-          <p>ул. Автомоторная, д.1/3 стр. 2, 125438 Москва, Россия</p>
-          <p>Телефон: +7 (981) 933-54-05 | Email: info@gerat-parts.ru</p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 };
